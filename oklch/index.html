@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RGB vs OKLCH Gradient</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      background: #f0f0f0;
+    }
+
+    .gradient-box {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .gradient {
+      height: 80px;
+      border-radius: 4px;
+    }
+
+    .rgb-gradient {
+      background: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 0, 255));
+    }
+
+    .oklch-gradient {
+      background: linear-gradient(to right, 
+        oklch(0.65 0.2 30), 
+        oklch(0.65 0.2 270)
+      );
+    }
+    /* .oklch-gradient {
+      background: linear-gradient(to right, 
+        oklch(0.65 0.2 30), 
+        oklch(0.65 0.2 270)
+      );
+    } */
+  </style>
+</head>
+<body>
+  <div class="gradient-box">
+    <div class="label">RGB グラデーション</div>
+    <div class="gradient rgb-gradient"></div>
+  </div>
+
+  <div class="gradient-box">
+    <div class="label">OKLCH グラデーション</div>
+    <div class="gradient oklch-gradient"></div>
+  </div>
+</body>
+</html>

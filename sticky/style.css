@@ -1,0 +1,60 @@
+html,body{
+  padding:0;
+  margin:0;
+}
+body{
+  overflow-x:hidden;
+}
+
+h1{
+  padding:20px;
+  position:sticky;
+  top:0;
+  
+  margin:0;
+  height:100vh;
+
+  display:inline;
+}
+
+section{
+  display:inline-block;
+  width:100vw;
+  height:250vh;
+  position:relative;
+  padding:0;
+  margin:0;
+
+  /* overflow-x:hidden; */
+}
+
+section:nth-of-type(1){
+  background:linear-gradient(#F008,#000A);
+}
+section:nth-of-type(2){
+  background:linear-gradient(#0F08,#000A);
+}
+section:nth-of-type(3){
+  background:linear-gradient(#00F8,#000A);
+}
+section:nth-of-type(4){
+  background:linear-gradient(#F008,#000A);
+}
+section:nth-of-type(5){
+  background:linear-gradient(#0F08,#000A);
+}
+section:nth-of-type(6){
+  background:linear-gradient(#00F8,#000A);
+}
+section:nth-of-type(7){
+  background:linear-gradient(#F008,#000A);
+}
+section:nth-of-type(8){
+  background:linear-gradient(#0F08,#000A);
+}
+section:nth-of-type(9){
+  background:linear-gradient(#00F8,#000A);
+}
+section:nth-of-type(10){
+  background:linear-gradient(#F008,#000A);
+}

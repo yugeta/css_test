@@ -1,0 +1,37 @@
+
+<svg class="visual" viewBox="0 0 400 400">
+  <defs>
+    <mask id="mask">
+      <path
+        class="mask-path"
+        style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 50px; stroke-linecap: round;" 
+        d="M 172.629 132.324 C 172.629 132.324 246.102 92.588 254.686 99.722 C 263.863 107.349 266.514 126.92 220.598 158.366 C 174.145 190.18 163.68 194.365 174.557 213.71 C 185.051 232.375 210.309 212.602 240.269 197.737 C 277.439 179.295 322.997 162.001 335.25 178.702 C 347.699 195.67 301.913 212.25 257.414 243.831 C 204.919 281.087 180.838 298.673 191.841 313.752 C 205.364 332.285 241.091 317.495 284.302 284.327 C 329.012 250.009 376.505 227.559 387.278 247.007 C 397.742 265.895 293.922 341.26 293.922 341.26"
+        fill="black"
+      />
+    </mask>
+  </defs>
+
+  <image
+    href="img.jpg"
+    width="400"
+    height="400"
+    preserveAspectRatio="xMidYMid slice"
+    mask="url(#mask)"
+  />
+</svg>
+
+<!-- <style>
+  .mask-path {
+    animation: maskAnimation 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes maskAnimation {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(100px);
+    }
+  }
+</style> -->

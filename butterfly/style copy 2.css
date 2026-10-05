@@ -1,0 +1,44 @@
+.butterfly {
+  display: flex;
+  width: 300px;
+  height: auto;
+  perspective: 800px;
+  border: 1px solid red;
+  overflow: hidden;
+}
+
+.wing {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+
+.left {
+  clip-path: inset(0 50% 0 0); /* 左半分 */
+  transform-origin: right center; /* 中心で回転 */
+  animation: flapLeft 1s ease-in-out infinite;
+}
+
+.right {
+  clip-path: inset(0 0 0 50%); /* 右半分 */
+  transform-origin: left center; /* 中心で回転 */
+  animation: flapRight 1s ease-in-out infinite;
+}
+
+@keyframes flapLeft {
+  0%, 100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(-25deg);
+  }
+}
+
+@keyframes flapRight {
+  0%, 100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(25deg);
+  }
+}

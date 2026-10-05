@@ -1,0 +1,40 @@
+<p class="a&b&c">数字から始まるclass記述</p>
+
+<style>
+.a\26 b\26 c{
+  color:red;
+}
+</style>
+
+
+<p class="abc
+def">改行のclass記述</p>
+
+<style>
+.abcdef{
+  color:blue;
+}
+
+.abc\5C ndef{
+  color:red;
+}
+
+p[class="abc\A def"]{
+  color:blue;
+}
+</style>
+
+
+<p class="foo bar">使えない記号対応のclass記述</p>
+
+<style>
+/* .foo.bar{
+  color:red;
+} */
+
+p[class="foo\20 bar"]{
+  color:red;
+}
+
+
+</style>

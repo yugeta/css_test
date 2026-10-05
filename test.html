@@ -1,0 +1,45 @@
+<div class="demo" name="Hello World !!"></div>
+
+<style>
+  .demo{
+    display:block;
+    text-align:center;
+    width:200px;
+    height:1.4em;
+    overflow:hidden;
+    color:transparent;
+    cursor:pointer;
+  }
+  .demo::before,
+  .demo::after{
+    content:attr(name);
+    display:block;
+  }
+
+  .demo::before{
+    color:black;
+  }
+
+  .demo:hover::before{
+    transition-property:margin;
+    transition-duration:0.3s;
+    margin-top:-1.4em;
+  }
+  .demo::after{
+    color:transparent;
+    background: linear-gradient(to right, transparent,white 30% 70%,transparent);
+    background-color:red;
+    background-clip:text;
+    background-size :50%;
+    background-repeat:no-repeat;
+    background-position:-50% 0%;
+  }
+  .demo:hover::after{
+    background-position:150% 0%;
+    transition-property:background-position;
+    transition-duration:0.5s;
+    transition-delay:0.2s;
+    transition-timing-function:linear;
+  }
+    
+  </style>

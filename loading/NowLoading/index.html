@@ -1,0 +1,50 @@
+<div id="page-loading">
+  <p>loading...</p>
+</div>
+
+<style>
+#page-loading {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    background-color: #fff;
+    overflow: hidden;
+}
+#page-loading *{
+  margin:0;
+}
+#page-loading > * {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+#page-loading > * > * {
+    display: inline-block;
+    color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', '游ゴシック Medium', YuGothic, YuGothicM, 'Hiragino Kaku Gothic ProN', メイリオ, Meiryo, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    animation: rotate 2s infinite linear;
+    text-transform: uppercase;
+}
+
+@keyframes rotate {
+	 70% { transform: rotateX(0deg); }
+	100% { transform: rotateX(360deg); }
+}
+</style>
+
+<script>
+{
+  const root = document.getElementById("page-loading")
+  const area = root.firstElementChild
+  const text = area.textContent.trim()
+  const list = text.split('').map((e,i) => {
+    const s = i * 0.1
+    return `<p style="animation-delay:${s}s;">${e}</p>`
+  }).join('')
+  area.innerHTML = list
+}
+</script>

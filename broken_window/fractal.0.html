@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .glass {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background-image: url('sample.webp'); /* ←画像パスをここに */
+      background-size: cover;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .fragment {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 400px;
+      background-image: url('sample.webp');
+      background-size: cover;
+      transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+    }
+
+    .shatter .fragment {
+      opacity: 0;
+      transform: translateY(200px) rotateZ(calc(90deg * var(--r)));
+    }
+  </style>
+</head>
+<body>
+  <div class="glass" id="glass"></div>
+
+  <script>
+    const glass = document.getElementById('glass');
+
+    // 三角形破片のポリゴン座標を手動で用意（簡易版）
+    const fragments = [
+      'polygon(0 0, 200px 0, 100px 150px)',
+      'polygon(200px 0, 400px 0, 300px 150px)',
+      'polygon(0 0, 100px 150px, 0 400px)',
+      'polygon(100px 150px, 200px 300px, 0 400px)',
+      'polygon(100px 150px, 300px 150px, 200px 300px)',
+      'polygon(300px 150px, 400px 400px, 200px 300px)',
+      'polygon(0 400px, 200px 300px, 200px 400px)',
+      'polygon(200px 300px, 400px 400px, 200px 400px)',
+    ];
+
+    // 破片を生成
+    fragments.forEach((shape, i) => {
+      const frag = document.createElement('div');
+      frag.className = 'fragment';
+      frag.style.clipPath = shape;
+      frag.style.setProperty('--r', Math.random().toFixed(2));
+      glass.appendChild(frag);
+    });
+
+    // クリックで崩壊
+    glass.addEventListener('click', () => {
+      glass.classList.toggle('shatter');
+    });
+  </script>
+</body>
+</html>

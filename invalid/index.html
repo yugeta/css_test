@@ -1,0 +1,51 @@
+<form class="demo">
+  <div class="flex">
+    <label><input type="radio" name="type" value="type-a">A</label>
+    <label><input type="radio" name="type" value="type-b">B</label>
+  </div>
+  <div class="flex">
+    <div>A</div>
+    <input type="text" name="a" required placeholder="入力してね" />
+  </div>
+  <div class="flex">
+    <div>B</div>
+    <input type="text" name="b" required placeholder="入力してね" />
+  </div>
+  <button type="submit">送信</button>
+</form>
+
+<style>
+form.demo{
+  border:1px solid black;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  width:300px;
+  padding:20px;
+}
+
+form.demo input{
+  padding:5px;
+  border:1px solid black;
+}
+form.demo:has(input[value="type-a"]:checked) input[name="a"]:invalid,
+form.demo:has(input[value="type-b"]:checked) input[name="b"]:invalid{
+  border-color:red;
+}
+
+form.demo .flex{
+  display:flex;
+  gap:5px;
+}
+
+
+/* 通常のrequiredチェック */
+form.demo:invalid {
+  border: 2px solid red;
+}
+
+/* 除外された要素はinvalidとみなさない */
+.no-validate:invalid {
+  border: none;
+}
+</style>

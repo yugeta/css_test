@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Mini Loading Grid</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #020617;
+}
+
+/* 4x4グリッド */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 18px);
+  grid-template-rows: repeat(4, 18px);
+  gap: 4px;
+}
+
+/* セル */
+.cell {
+  width: 18px;
+  height: 18px;
+  background: #2b4475;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+}
+
+/* 点灯 */
+.cell.on {
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56,189,248,0.6);
+  transform: scale(1.1);
+}
+</style>
+</head>
+<body>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const grid = document.getElementById("grid");
+
+/* 4x4セルだけ生成 */
+const cells = [];
+for (let i = 0; i < 16; i++) {
+  const div = document.createElement("div");
+  div.className = "cell";
+  grid.appendChild(div);
+  cells.push(div);
+}
+
+/* 4x4フォント */
+const font = {
+  L: [
+    "1000",
+    "1000",
+    "1000",
+    "1111"
+  ],
+  O: [
+    "0110",
+    "1001",
+    "1001",
+    "0110"
+  ],
+  A: [
+    "0110",
+    "1001",
+    "1111",
+    "1001"
+  ],
+  D: [
+    "1110",
+    "1001",
+    "1001",
+    "1110"
+  ],
+  I: [
+    "1110",
+    "0100",
+    "0100",
+    "1110"
+  ],
+  N: [
+    "1001",
+    "1101",
+    "1011",
+    "1001"
+  ],
+  G: [
+    "0111",
+    "1000",
+    "1011",
+    "0111"
+  ]
+};
+
+const word = "LOADING";
+let index = 0;
+
+/* 描画 */
+function draw(char) {
+  const pattern = font[char];
+
+  // 全クリア
+  cells.forEach(c => c.classList.remove("on"));
+
+  for (let y = 0; y < 4; y++) {
+    for (let x = 0; x < 4; x++) {
+      if (pattern[y][x] === "1") {
+        const i = y * 4 + x;
+        if (cells[i]) {
+          cells[i].classList.add("on");
+        }
+      }
+    }
+  }
+}
+
+/* ループ */
+function loop() {
+  draw(word[index]);
+  index = (index + 1) % word.length;
+}
+
+loop();
+setInterval(loop, 900);
+</script>
+
+</body>
+</html>

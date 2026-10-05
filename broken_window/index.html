@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      width: 400px;
+      height: 400px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .piece {
+      background-image: url('sample.webp'); /* ←画像パスを変更 */
+      background-size: 400px 400px;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .shatter .piece {
+      opacity: 0;
+      transform: translate(
+        calc(-50px + 100px * var(--x)),
+        calc(-50px + 100px * var(--y))
+      ) rotate(calc(90deg * var(--r)));
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="glass">
+    <!-- 16ピースに分割 -->
+    <script>
+      const container = document.getElementById('glass');
+      const size = 4; // 4x4分割
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          const div = document.createElement('div');
+          div.className = 'piece';
+          div.style.backgroundPosition = `${-x * 100}px ${-y * 100}px`;
+          div.style.setProperty('--x', Math.random().toFixed(2));
+          div.style.setProperty('--y', Math.random().toFixed(2));
+          div.style.setProperty('--r', Math.random().toFixed(2));
+          container.appendChild(div);
+        }
+      }
+
+      container.addEventListener('click', () => {
+        container.classList.toggle('shatter');
+      });
+    </script>
+  </div>
+</body>
+</html>

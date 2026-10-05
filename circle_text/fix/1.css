@@ -1,0 +1,40 @@
+.circle{
+  width: 200px;
+  height: 200px;
+  border-radius:50%;
+  background: lightblue;
+  /* overflow: hidden; */
+}
+
+.circle,
+.circle::before,
+.circle::after,
+.circle *{
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
+
+.circle .text{
+  width:90%;
+}
+
+.circle::before,
+.circle::after{
+  height: 100%;
+  width: 30%;
+}
+
+.circle::before{
+  content:"";
+  /* display:block; */
+  float: left;
+  shape-outside: polygon(0% 0%, 0% 100%, 100% 100%, 0% 70%, 0% 30%, 100% 0%);
+}
+
+.circle::after{
+  content:"";
+  /* display:block; */
+  float: right;
+  shape-outside: polygon(100% 0%, 100% 100%, 0% 100%, 100% 70%, 100% 30%, 0% 0%);
+}

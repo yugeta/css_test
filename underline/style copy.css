@@ -1,0 +1,17 @@
+.marker {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.marker::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.2em; /* ←ここで高さ調整 */
+  width: 100%;
+  height: 0.5em; /* ←太さ */
+  background: #ffe66d; /* 色 */
+  z-index: -1; /* 文字の後ろに回す */
+}
+

@@ -1,0 +1,35 @@
+.carousel.\33 d{
+  --perspective-size : 1500px;
+}
+.carousel.\33 d figure{
+  /* perspective: 1500px; */
+}
+
+.carousel.\33 d figure .item{
+  z-index:-1; 
+  
+  /* perspective: var(--perspective-size); */
+  perspective-origin: center;
+  --z   : 0;
+  --rot : 0;
+  --scale:1.0;
+  /* transform:perspective(var(--perspective-size)) translate3d(0,0, calc(var(--z)/10)); */
+}
+
+.carousel.\33 d figure .item > *{
+  transition: transform 0.3s;
+  backface-visibility: hidden; /* 背面を表示しない */
+  /* transform: translate3d(0,0, var(--z)) rotateY(var(--rot)); */
+  /* transform:perspective(var(--perspective-size))  translate3d(0,0, var(--z)); */
+  transform:scale(var(--scale));
+  
+}
+
+.carousel.\33 d figure .item[data-status="active"]{
+  z-index:2;
+}
+.carousel.\33 d figure .item[data-status="active"] > *{
+  transform:scale(1.3);
+}
+
+

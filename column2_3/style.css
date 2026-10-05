@@ -1,0 +1,47 @@
+main.page {
+  display: grid;
+  grid-template-columns: 35% 65%; /* 2カラム時 */
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main.page > *{
+  border:1px solid black;
+}
+
+.left-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* 大画面時に3カラム化 */
+@media (min-width: 1000px) {
+  main.page {
+    grid-template-columns: 1fr 500px 1fr;
+  }
+
+  .left-wrapper {
+    display: contents; /* ラッパーを"透過"して.leftと.rightをgridの個別要素に戻す */
+    overflow: visible;
+    max-height: none;
+  }
+
+  .left {
+    grid-column: 1;
+    grid-row: 1;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .content {
+    grid-column: 2;
+  }
+
+  .right {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}

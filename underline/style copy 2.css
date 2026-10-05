@@ -1,0 +1,16 @@
+.marker {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.marker::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: 0.15em;
+  width: calc(100% + 4px);
+  height: 0.6em;
+  background: linear-gradient(transparent 40%, #ffe66d 40%);
+  z-index: -1;
+}

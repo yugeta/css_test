@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    .fragment {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 400px;
+      background-image: url('sample.webp'); /* ←画像パス */
+      background-size: cover;
+      clip-path: polygon(0 0, 0 0, 0 0); /* 後で設定 */
+      opacity: 1;
+      transition:
+        transform 1.2s ease-out,
+        opacity 1.2s ease-out;
+    }
+
+    .shatter .fragment {
+      opacity: 0;
+      animation: fall 1.5s forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform:
+          translateY(300px)
+          translateX(var(--xShift))
+          rotate(var(--rotate));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="glass"></div>
+
+  <script>
+    const glass = document.getElementById('glass');
+    const numFragments = 40;
+
+    const centerX = 200;
+    const centerY = 200;
+
+    for (let i = 0; i < numFragments; i++) {
+      const angle1 = Math.random() * 360;
+      const angle2 = angle1 + 10 + Math.random() * 20;
+      const radius1 = 200 + Math.random() * 100;
+      const radius2 = 200 + Math.random() * 100;
+
+      const x1 = centerX + Math.cos(angle1 * Math.PI / 180) * radius1;
+      const y1 = centerY + Math.sin(angle1 * Math.PI / 180) * radius1;
+      const x2 = centerX + Math.cos(angle2 * Math.PI / 180) * radius2;
+      const y2 = centerY + Math.sin(angle2 * Math.PI / 180) * radius2;
+
+      const frag = document.createElement('div');
+      frag.className = 'fragment';
+
+      frag.style.clipPath = `polygon(${centerX}px ${centerY}px, ${x1}px ${y1}px, ${x2}px ${y2}px)`;
+      frag.style.setProperty('--xShift', `${Math.random() * 100 - 50}px`);
+      frag.style.setProperty('--rotate', `${(Math.random() * 720 - 360).toFixed(1)}deg`);
+      frag.style.animationDelay = `${(Math.random() * 0.4).toFixed(2)}s`;
+
+      glass.appendChild(frag);
+    }
+
+    glass.addEventListener('click', () => {
+      glass.classList.toggle('shatter');
+    });
+  </script>
+</body>
+</html>

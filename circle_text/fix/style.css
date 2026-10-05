@@ -1,0 +1,54 @@
+.circle{
+  --size : 300px;
+  --padding:20px;
+
+  width: var(--size);
+  height: var(--size);
+  border-radius:50%;
+  background: lightblue;
+  overflow: hidden;
+  padding:var(--padding);
+  box-sizing: border-box;
+}
+
+.circle *{
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
+
+.circle .text{
+  white-space:pre-wrap;
+}
+
+.circle .left,
+.circle .right{
+  height: 100%;
+  width: 33%;
+}
+
+.circle .left{
+  float: left;
+  shape-outside: polygon(
+    0% 0%, 
+    0% 100%, 
+    100% 100%, 
+    30% 90%,
+    0% 70%, 
+    0% 30%, 
+    30% 10%,
+    100% 0%);
+}
+
+.circle .right{
+  float: right;
+  shape-outside: polygon(
+    100% 0%, 
+    100% 100%, 
+    0% 100%, 
+    80% 90%,
+    100% 70%, 
+    100% 30%, 
+    80% 10%,
+    0% 0%);
+}

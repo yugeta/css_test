@@ -1,0 +1,18 @@
+.carousel.\33 d{
+  --perspective-size : 1500px;
+}
+
+.carousel.\33 d figure{
+  perspective: var(--perspective-size);
+  perspective-origin: center;
+}
+
+.carousel.\33 d figure .item{
+  transition: transform 0.1s;
+  backface-visibility: hidden; /* 背面を表示しない */
+  transform: translate3d(0,0,0);
+}
+.carousel.\33 d figure .item[data-status="active"]{
+  transform: translate3d(0, 0, 400px);
+}
+

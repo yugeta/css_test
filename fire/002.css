@@ -1,0 +1,77 @@
+/* CSS */
+body {
+  background: #1a002d;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.magic-flame {
+  width: 300px;
+  height: 300px;
+  /* border-radius: 50%; */
+  position: relative;
+
+  background-image: 
+    url('bg.png'), /* アップロードした画像をベースに */
+    radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.2), transparent 70%),
+    radial-gradient(circle at 30% 30%, rgba(255, 128, 255, 0.4), transparent 70%),
+    radial-gradient(circle at 70% 70%, rgba(200, 0, 255, 0.3), transparent 70%);
+    
+  background-size: cover, 100% 100%, 100% 100%, 100% 100%;
+  background-blend-mode: screen, screen, screen, screen;
+
+  filter: brightness(1.3) blur(3px);
+  animation: flameFlow 5s infinite ease-in-out alternate;
+}
+
+.magic-flame::before,
+.magic-flame::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background-image: inherit;
+  background-size: inherit;
+  background-blend-mode: inherit;
+  filter: brightness(1.2) blur(5px) hue-rotate(20deg);
+  animation: flicker 6s infinite ease-in-out;
+}
+
+.magic-flame::after {
+  animation-delay: 2s;
+  filter: brightness(1.4) blur(6px) hue-rotate(-30deg);
+}
+
+@keyframes flameFlow {
+  0% {
+    transform: scale(1) rotate(0deg);
+    background-position: 50% 50%, 30% 30%, 70% 70%;
+  }
+  50% {
+    transform: scale(1.05) rotate(1deg);
+    background-position: 52% 48%, 32% 34%, 68% 72%;
+  }
+  100% {
+    transform: scale(1) rotate(-0.5deg);
+    background-position: 49% 51%, 28% 32%, 72% 68%;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03) rotate(1deg);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(0.98) rotate(-1deg);
+  }
+}

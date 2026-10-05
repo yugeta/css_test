@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LOADING 5x5 Grid</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #020617;
+}
+
+/* 5x5グリッド */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 28px);
+  grid-template-rows: repeat(5, 28px);
+  gap: 6px;
+}
+
+/* セル */
+.cell {
+  width: 28px;
+  height: 28px;
+  /* background: #0b1220; */
+  background: #33347b;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+
+/* ON状態（文字） */
+.cell.on {
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56,189,248,0.7);
+  transform: scale(1.1);
+}
+
+/* 微妙なフェード感 */
+.cell.fade {
+  background: #6366f1;
+}
+</style>
+</head>
+<body>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const grid = document.getElementById("grid");
+const size = 5;
+
+// セル生成（5x5 = 25個）
+const cells = [];
+for (let i = 0; i < size * size; i++) {
+  const div = document.createElement("div");
+  div.className = "cell";
+  grid.appendChild(div);
+  cells.push(div);
+}
+
+/* 5x5フォント */
+const font = {
+  L: [
+    "10000",
+    "10000",
+    "10000",
+    "10000",
+    "11111"
+  ],
+  O: [
+    "01110",
+    "10001",
+    "10001",
+    "10001",
+    "01110"
+  ],
+  A: [
+    "01110",
+    "10001",
+    "11111",
+    "10001",
+    "10001"
+  ],
+  D: [
+    "11110",
+    "10001",
+    "10001",
+    "10001",
+    "11110"
+  ],
+  I: [
+    "01110",
+    "00100",
+    "00100",
+    "00100",
+    "01110"
+  ],
+  N: [
+    "10001",
+    "11001",
+    "10101",
+    "10011",
+    "10001"
+  ],
+  G: [
+    "01110",
+    "10001",
+    "10000",
+    "10011",
+    "01110"
+  ]
+};
+
+const word = "LOADING";
+let index = 0;
+
+/* 描画 */
+function drawChar(char) {
+  cells.forEach(c => c.classList.remove("on", "fade"));
+
+  const pattern = font[char];
+
+  for (let y = 0; y < 5; y++) {
+    for (let x = 0; x < 5; x++) {
+      if (pattern[y][x] === "1") {
+        const i = y * 5 + x;
+        if (cells[i]) {
+          cells[i].classList.add("on");
+        }
+      }
+    }
+  }
+}
+
+/* ループ */
+function loop() {
+  drawChar(word[index]);
+  index = (index + 1) % word.length;
+}
+
+loop();
+setInterval(loop, 800);
+</script>
+
+</body>
+</html>

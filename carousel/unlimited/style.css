@@ -1,0 +1,24 @@
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  gap: 10px;
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+}
+
+.item {
+  min-width: 200px;
+  height: 150px;
+  background: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+}

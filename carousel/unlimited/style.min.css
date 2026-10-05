@@ -1,0 +1,1 @@
+.carousel{overflow:hidden;position:relative;width:100%}.slider{display:flex;gap:10px;scroll-behavior:smooth;will-change:scroll-position}.item{align-items:center;background:#add8e6;border:1px solid #ccc;box-sizing:border-box;display:flex;font-size:1.5rem;height:150px;justify-content:center;min-width:200px}

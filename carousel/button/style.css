@@ -1,0 +1,56 @@
+*, :after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ul.carousel{
+  display:flex;
+  width:300px;
+  margin:0 auto;
+  border:1px solid black;
+  border-radius:10px;
+  overflow:hidden;
+  white-space:normal;
+  padding:0;
+}
+ul.carousel > li{
+  list-style:none;
+  min-width:100%;
+  margin:0;
+  padding:20px;
+  white-space:normal;
+}
+ul.carousel > li p{
+  padding:0;
+  margin:0;
+}
+ul.carousel > li .button{
+  margin-top:50px;
+  display:flex;
+  justify-content:space-around;
+}
+ul.carousel > li a{
+  text-decoration:none;
+  width:100px;
+  text-decoration:none;
+  cursor:pointer;
+  padding:10px 20px;
+  text-align:center;
+  font-size:0.9em;
+  font-weight:bold;
+  color: #fff;
+
+  background-color: #eb6100;
+  border-bottom: 5px solid #b84c00;
+}
+ul.carousel > li a:active{
+  transform:translateY(3px);
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+ul.carousel > li a:not([href]){
+  opacity:0;
+}

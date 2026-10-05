@@ -1,0 +1,68 @@
+.ring-area,
+.ring-area *,
+.ring-area *::before,
+.ring-area *::after{
+  -webkit-box-sizing : border-box;
+     -moz-box-sizing : border-box;
+       -o-box-sizing : border-box;
+      -ms-box-sizing : border-box;
+          box-sizing : border-box;
+  white-space:normal;
+}
+
+.ring-area{
+  --size-ring : 400px;
+  --size-atom : 30px;
+  --border : 20px;
+
+  position:relative;
+  width:var(--size-ring);
+  height:var(--size-ring);
+  transform: rotate(45deg);
+  margin:0 auto;
+}
+
+.ring{
+  width  : 100%;
+  height : 100%;
+  clip-path:circle();
+  background: linear-gradient(#3e1485, #007a7d);
+  mask-image: radial-gradient(transparent calc(var(--size-ring) / 2 - var(--border)), black calc(var(--size-ring) / 2 - var(--border)));
+  transform : scale(0.4, 1.0);
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+.atom{
+  position:absolute;
+  top    : 0;
+  left   : 0;
+  width  : var(--size-atom);
+  height : var(--size-atom);
+  background-color:#3e1485;
+  border:4px solid white;
+  border-radius:50%;
+  transform:translate(0, 25%);
+  offset-path : ellipse(20% 50%);
+
+  animation : ring-move 3.0s cubic-bezier(0.59, 0.26, 0.52, 0.85) 0.0s infinite;
+}
+
+@keyframes ring-move{
+  to{
+    offset-distance: 100%;
+  }
+}
+
+@media (max-width:500px){
+  .ring-area{
+    --border : 50px;
+  }
+}
+@media (max-width:400px){
+  .ring-area{
+    --border : 70px;
+  }
+}
+

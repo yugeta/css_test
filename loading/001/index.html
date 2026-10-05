@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Neon Halo Spinner (Mask)</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+}
+
+/* ローダー */
+.loader {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1.2s linear infinite;
+}
+
+/* グラデーションリング（くり抜き） */
+.loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+
+  background: conic-gradient(
+    #38bdf8,
+    #6366f1,
+    #ec4899,
+    #38bdf8
+  );
+
+  /* ここが本質：内側をくり抜く */
+  -webkit-mask: radial-gradient(circle, transparent 55%, black 56%);
+  mask: radial-gradient(circle, transparent 55%, black 56%);
+}
+
+/* 回転 */
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="loader"></div>
+
+</body>
+</html>

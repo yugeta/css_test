@@ -1,0 +1,55 @@
+/* Common */
+.carousel img{
+  object-fit:cover;
+}
+
+/* Carousel */
+.carousel{
+  width:100%;
+  height:500px;
+  position:relative;
+  padding:0;
+}
+.carousel figure{
+  width:100%;
+  height:100%;
+  display:flex;
+  gap:10px;
+  overflow-x:scroll;
+  position:relative;
+  border-radius:8px;
+  margin:0;
+  padding:100px 0;
+}
+.carousel figure .item{
+  width:30%;
+  min-width:400px;
+  height:100%;
+  flex:1;
+  position:relative;
+  z-index:-1;
+  
+}
+.carousel figure .item > *{
+  width:100%;
+  height:100%;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.5);
+}
+
+/* scroll-bar hidden */
+.carousel figure{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.carousel figure::-webkit-scrollbar{
+  display:none;
+}
+
+/* Fit center */
+.carousel figure{
+  scroll-snap-type: x mandatory;
+}
+.carousel figure .item{
+  scroll-snap-align: center;
+  scroll-snap-stop : always; /* １要素ずつスクロールする */
+}

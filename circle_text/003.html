@@ -1,0 +1,51 @@
+<div class="circle-container">
+  <div class="circle"></div>
+  <p>このテキストは円の外側に沿って配置されます。このように形状に基づいて文字を流し込むことができます。</p>
+</div>
+
+<style>
+.circle-container {
+  display: flex;
+  position: relative;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: lightblue;
+  position: relative;
+  float: left;
+  shape-outside: circle();
+  clip-path: circle();
+  margin-right: 10px;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+  width: 100%;
+}
+
+.circle-container::before,
+.circle-container::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  shape-outside: circle();
+  clip-path: circle();
+  background: transparent;
+}
+
+.circle-container::before {
+  left: 0; /* 左側のテキストを円形に流す */
+  top: 0;
+}
+
+.circle-container::after {
+  right: 0; /* 右側のテキストを円形に流す */
+  top: 0;
+}
+</style>

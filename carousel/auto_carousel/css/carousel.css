@@ -1,0 +1,107 @@
+/* Variables */
+.focus-carousel{
+  --blur : 5px;
+  --scale : 1.5;
+  --width : 400px;
+  --height : 300px;
+  --padding-h : 100px;
+  --gap : 10px;
+}
+
+/* Common */
+.focus-carousel img{
+  object-fit:cover;
+}
+figure{
+  padding:0;
+}
+
+/* Focus Carousel */
+.focus-carousel{
+  width:100%;
+  height:calc(var(--height) + var(--padding-h) * 2);
+  position:relative;
+  padding:0;
+}
+.focus-carousel figure{
+  width:100%;
+  height:100%;
+  display:flex;
+  gap:var(--gap);
+  overflow-x:scroll;
+  position:relative;
+  border-radius:8px;
+  margin:0;
+  padding:var(--padding-h) 0%;
+  /* padding:var(--padding-h) 50%; */
+  /* padding:var(--padding-h) calc(var(--width) * 1.5); */
+}
+.focus-carousel figure .item{
+  width:var(--width);
+  min-width:var(--width);
+  max-width:100%;
+  height:100%;
+  flex:1;
+  position:relative;
+  z-index:-1;
+
+}
+.focus-carousel figure .item > *{
+  width:100%;
+  height:100%;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.5);
+}
+
+/* scroll-bar hidden */
+.focus-carousel figure{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.focus-carousel figure::-webkit-scrollbar{
+  display:none;
+}
+
+/* Fit center */
+/* .focus-carousel:not([data-status="scrolling"]) figure{
+  scroll-snap-type: x mandatory;
+}
+.focus-carousel:not([data-status="scrolling"]) figure .item{
+  scroll-snap-align: center;
+  scroll-snap-stop : always;
+} */
+
+@media (max-width:768px){
+  .focus-carousel figure .item{
+    width:100%;
+    min-width:100%;
+    max-width:100%;
+  }
+}
+
+
+
+.focus-carousel{
+  --perspective-size : 1500px;
+}
+
+.focus-carousel figure .item{
+  z-index:1; 
+}
+
+.focus-carousel figure .item > *{
+  transition-property: transform,filter,-ms-filter;
+  transition-duration: 0.5s;
+  transform:scale(1);
+  -ms-filter: blur(var(--blur));
+  filter: blur(var(--blur));
+}
+
+.focus-carousel figure .item[data-status="active"]{
+  z-index:2;
+}
+.focus-carousel figure .item[data-status="active"] > *{
+  transform:scale(var(--scale));
+  -ms-filter: blur(0);
+  filter: blur(0);
+}
+

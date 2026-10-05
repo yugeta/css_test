@@ -1,0 +1,63 @@
+.ring-area{
+  --size : 300px;
+
+  position:relative;
+  width:var(--size);
+  height:var(--size);
+
+  border:1px solid red;
+
+  transform: rotate(45deg) scale(0.3, 1.0);
+}
+
+.ring-area,
+.ring-area *,
+.ring-area *::before,
+.ring-area *::after{
+  -webkit-box-sizing : border-box;
+     -moz-box-sizing : border-box;
+       -o-box-sizing : border-box;
+      -ms-box-sizing : border-box;
+          box-sizing : border-box;
+}
+
+.ring{
+  width:100%;
+  height:100%;
+  border:30px solid black;
+  border-radius:50%;
+  /* transform: rotate(45deg) scale(0.3, 1.0); */
+}
+
+.atom{
+  position:absolute;
+  top:0px;
+  height:0px;
+  width:100%;
+  height:100%;
+  border:1px solid blue;
+  animation : ring-move 2.0s ease-out 0.0s infinite;
+}
+
+.atom::before{
+  content:"";
+  display:block;
+  width:30px;
+  height:30px;
+  background-color:red;
+  border-radius:50%;
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translate(-50%,0) scale(3.0,1.0);
+}
+
+@keyframes ring-move{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
+

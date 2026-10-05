@@ -1,0 +1,50 @@
+<div id="circleTextContainer"></div>
+
+<style>
+#circleTextContainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #ccc;
+  border-radius: 50%; /* 円形 */
+  margin: 20px auto;
+  overflow: hidden; /* はみ出し防止 */
+}
+
+#circleTextContainer span {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 14px;
+  transform-origin: center;
+}
+</style>
+
+<script>
+const text = "どうやって勉強したらいい？ どんな人が研究者に向いているの？ 実験の大変なことは？ などなど、気になっているけど 普段気楽に聞けないことも 東大・熊大の先生に直接聞けちゃう チャンスだモン！";
+
+const container = document.getElementById("circleTextContainer");
+const radius = 150; // 円の半径
+const centerX = radius;
+const centerY = radius;
+
+let currentAngle = -90; // 円の上部スタート
+
+// テキストを分割し、配置
+text.split(" ").forEach((word, index) => {
+  const span = document.createElement("span");
+  span.textContent = word;
+
+  // 角度に基づいて座標を計算
+  const x = centerX + Math.cos(currentAngle * (Math.PI / 180)) * radius;
+  const y = centerY + Math.sin(currentAngle * (Math.PI / 180)) * radius;
+
+  span.style.left = `${x}px`;
+  span.style.top = `${y}px`;
+  span.style.transform = `translate(-50%, -50%)`;
+
+  container.appendChild(span);
+
+  // 次の単語のために角度を増やす
+  currentAngle += 12; // 文字間隔を調整（適宜調整可能）
+});
+</script>

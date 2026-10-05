@@ -1,0 +1,36 @@
+.image-wrap{
+  overflow : hidden;
+  width    : 300px;
+  height   : 300px;
+  position : relative;
+}
+
+.image-wrap > img{
+  position   : absolute;
+  width      : calc(100% + var(--move));
+  height     : 100%;
+  top        : 0;
+  left       : 0;
+  object-fit : cover;
+  transform  : translateX(calc(var(--move) * -1));
+}
+
+.image-wrap > img[data-slide]{
+  transition-property        : transform, clip-path;
+  transition-duration        : var(--slide);
+  transition-timing-function : linear;
+
+  transform: translateX(0);
+}
+.image-wrap > img[data-wipe]{
+  animation : img-wipe var(--wipe) ease-in-out 0s forwards;
+}
+
+@keyframes img-wipe{
+  0%{
+    clip-path : polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100%{
+    clip-path : polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+} 
